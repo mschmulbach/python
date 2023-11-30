@@ -94,8 +94,8 @@ class TelevisionApp(QtWidgets.QWidget, UiRemote):
         """
         super().__init__()
         self.powerButton = None
-        self.setupui(self)  
-        self.tv = Television()  
+        self.setupui(self)  # Set up the GUI defined in Qt Designer
+        self.tv = Television()  # Create an instance of your Television class
 
         # Connect UI elements to Television class methods
         self.powerButton.clicked.connect(self.toggle_power)
@@ -112,9 +112,9 @@ class TelevisionApp(QtWidgets.QWidget, UiRemote):
         """
         self.tv.power()
         if self.tv.is_on():
-            self.update_channel_display()  
+            self.update_channel_display()  # Update the display when the TV is turned on
         else:
-            self.channelDisplayLabel.clear()  
+            self.channelDisplayLabel.clear()  # Clear the display when the TV is turned off
         self.update_ui()
 
     def toggle_mute(self) -> None:
@@ -177,4 +177,3 @@ class TelevisionApp(QtWidgets.QWidget, UiRemote):
         current_volume = self.tv.get_volume()
         self.volumeSlider.setValue(current_volume)
         self.volumeNumberLabel.setText(str(current_volume))
-        
